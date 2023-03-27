@@ -1,0 +1,258 @@
+*,*::before,*::after{
+    margin:0;
+    padding:0;
+    box-sizing: inherit;
+
+}
+
+html{
+    font-size:62.5%;
+}
+
+body{
+    margin:0;
+    padding:0;
+}
+
+main{
+    padding:0;
+    margin:0;
+    width:100vw;
+    height:100vh;
+    display:flex;
+    justify-content: center;
+    align-items:center; 
+    background-color:hsl(222, 26%, 31%);
+
+
+}
+.calc-container{
+    width:25%;
+    min-width:35rem;
+    display:flex;
+    flex-flow:column nowrap;
+    justify-content:center;
+    align-items:center;
+    min-height:auto;
+    background:transparent;
+    box-sizing: border-box;
+}
+
+.calc-label{
+    color:white;
+    margin:1.5rem 0 0 0;
+    font-size:2rem;
+    font-weight: bold;
+}
+
+.calc-header{
+    display:flex;
+    width:100%;
+    margin:2rem 0;
+    flex-flow:row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.calc-theme{
+    display:flex;
+    align-self:flex-start;
+    justify-content:space-between;
+    align-items:flex-start;
+}
+
+.theme-label{
+    font-size:1.2rem;
+    margin:0 1rem ;
+    color:white;
+    font-weight: bold;
+    align-self:flex-end;
+
+}
+
+.theme-mode-container{
+    display:flex;
+    flex-flow:column nowrap;
+    box-sizing: border-box;
+}
+
+.theme-mode--number{
+    display:flex;
+    justify-content: space-between;
+}
+
+.theme-mode--number span{
+    color:white;
+    font-size:1.2rem;
+    padding:0 .2rem 0 .2rem;
+}
+
+.scroll--container{
+    display:flex;
+    position:relative;
+    justify-content:center;
+    width:6rem;
+    height:auto;
+    padding:.3rem 2.5rem;
+    border-radius:2rem;
+    background-color:hsl(224, 36%, 15%);
+}
+
+.theme-scroll{
+    width:.1rem;
+    height:1rem;
+    position:relative;
+    padding: 0.7rem .7rem;
+    background-color:white;
+    border-radius:4rem;
+    align-self:flex-end;
+    transform:translate(-2rem);
+    background-color: red;
+}
+
+
+.calc-screen{
+    display:flex;
+    justify-content: center;
+    margin:0 0 1.5rem 0;
+}
+.calc-screen input{
+    width:100%;
+    outline:none;
+    border:none;  
+    color:white; 
+    direction:rtl;
+    font-size:3rem;
+    font-weight:bold;
+    padding:1.5rem;
+    border-radius:1rem;
+    align-self:center;
+    background-color:hsl(224, 36%, 15%);
+}
+
+.calc-keyboard{
+    display:flex;
+    width:100%;
+    flex-flow:column nowrap;
+    box-sizing:border-box;
+    justify-content: center;
+    align-items:center;
+    padding: 2rem;
+    border-radius:1.5rem;
+    background-color:hsl(223, 31%, 20%);
+    box-sizing: border-box;
+
+}
+
+.calc-button{
+    display:grid;
+    gap:1rem;
+    justify-items:center;
+    grid-template-columns:repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    height:auto;
+    width:100%;
+}
+
+.calc-button button{
+    width:7rem;
+    font-size:2.3rem;
+    font-weight: bold;
+    height:5rem;
+    border: none;
+    color:hsl(221, 14%, 31%);
+    border-radius:1rem;
+    border-bottom:.3rem solid hsl(224, 28%, 35%);
+    background-color:white;
+}
+.calc-button .del{
+    color:white;
+    background-color:hsl(225, 21%, 49%);
+    border-bottom:.5rem solid hsl(224, 28%, 35%);
+    
+}
+
+.calc-func-button{
+    display:flex;
+    justify-content: space-between;
+    align-self:center;
+    margin:1rem  0 0 0;
+    width:100%;
+    box-sizing: border-box;
+}
+
+.calc-func-button button{
+    width:45%;
+    font-size:2.3rem;
+    font-weight: bold;
+    max-height:5rem;
+    margin:0; 
+    padding:1rem 0 ;
+    border:none;
+    border-radius:1rem;
+       
+}
+
+
+
+.equal-to{
+    color:white;
+    border-bottom:.5rem solid  hsl(6, 70%, 34%);
+    background-color: hsl(6, 63%, 50%);
+}
+
+.reset{
+    color:white;
+    background-color:hsl(225, 21%, 49%);
+    border-bottom:.5rem solid hsl(224, 28%, 35%);
+}
+
+
+@media  screen and (max-width: 375px) {
+
+    .calc-container{
+        width:80%;
+        max-width:25rem;
+        margin:
+        align-items: center;
+        box-sizing: border-box;
+    }
+    .calc-header{
+        width:80%;
+        align-self:center;
+    }
+
+    .calc-screen{
+        width:80%;
+        align-self:center;
+    }
+
+    .calc-keyboard{
+        padding:2rem 0;
+        width:80%;
+        align-self:center;
+        box-sizing: border-box;
+    }
+
+    .calc-button{
+        gap:0;
+    }
+    
+    .calc-button button{
+        width:5rem;
+        height:6rem;
+    }
+
+    .calc-func-button{
+        align-self: center;
+
+
+    }
+
+    .calc-func-button button{
+        width:45%;
+        margin:0 1rem;
+        min-height:6.5rem;
+    }
+}
