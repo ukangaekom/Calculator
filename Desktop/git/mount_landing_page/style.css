@@ -1,0 +1,811 @@
+/*<--============ Google fonts ==========-->*/
+
+/* Setting fonts sizes, colors and blocks */
+:root {
+  /* FONT FAMILY */
+  --primary-font-family: "Bebas Neue";
+  --secondary-font-family: "Oswald";
+  --tertiary-font-family: "Lato";
+  --tertiary2-font-family: "Lato";
+  /* COLORS */
+  --heading-num-color: #9fa7b5;
+  --heading-topic-color: #3f4e6b;
+  --primary-color: #404f6c;
+  --tertiary-color: #b0b4be;
+  --tertiary-link-color: #404f6c;
+  --tertiary-footer-color: #61759e;
+  --primary-content-color: #222222;
+  --slide-color: #636e82;
+  --losangeles-color: #4d4d4d;
+  --mountain-color: #404f6c;
+
+  /* LOGO SIZE */
+  --logo-img-size: auto;
+
+  /* FONT SIZES */
+
+  --losangeles-font-size: 8rem;
+  --mountain-font-size: 9rem;
+  --headingnum-font-size: 9rem;
+  --topic-font-size: 4rem;
+  --about-content-font-size: 2rem;
+  --mountainlinks-font-size: 3rem;
+  --schedule-list-font-size: 1.7rem;
+  --small-logotext: 2rem;
+
+  /* POSITION */
+  --topic-position: -8rem;
+  --topic-left: 13rem;
+  --history-about-position: -7rem;
+  --header-text-position: -24rem;
+}
+
+@media screen and (max-width: 710px) {
+  :root {
+    /* LOGO SIZE */
+    --logo-img-size: auto;
+
+    /* FONT SIZE */
+    --losangeles-font-size: 4rem;
+    --mountain-font-size: 5rem;
+    --headingnum-font-size: 7rem;
+    --topic-font-size: 3rem;
+    --about-content-font-size: 1.5rem;
+    --mountainlinks-font-size: 2rem;
+    --schedule-list-font-size: 1.5rem;
+    --small-logotext: 1.3rem;
+
+    /* POSITION */
+    --topic-position: -6rem;
+    --topic-left: 10rem;
+    --history-about-position: -5rem;
+    --header-text-position: -23rem;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  :root {
+    /* LOGO SIZE */
+    --logo-img-size: 3rem;
+
+    /* FONT-SIZE */
+    --losangeles-font-size: 3rem;
+    --mountain-font-size: 3.5rem;
+    --headingnum-font-size: 7rem;
+    --topic-font-size: 3rem;
+    --about-content-font-size: 1.4rem;
+    --mountainlinks-font-size: 1.5rem;
+    --schedule-list-font-size: 1.3rem;
+    --small-logotext: 1rem;
+
+    /* TOPIC POSITION */
+    --topic-position: -6rem;
+    --header-text-position: -20rem;
+  }
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* HEADER SECTION */
+header {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  position: relative;
+  flex-flow: column nowrap;
+  justify-content: center;
+  background: url("/img/header_background.png");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position-x: -60rem;
+  background-size: 200rem;
+}
+
+/* SNOW FALLING IMAGE */
+
+.snow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  box-sizing: border-box;
+}
+
+.snow img {
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+}
+
+/* THE NAVIGATION MENU */
+.nav {
+  display: flex;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 10vh;
+  background-color: transparent;
+}
+
+.nav_menu {
+  display: flex;
+  width: auto;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
+}
+
+.nav_list ul {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.nav_list ul li {
+  list-style-type: none;
+  margin: 0 3rem;
+}
+
+.nav_list ul li a {
+  font-size: 1.6rem;
+  color: white;
+  font-family: var(--tertiary2-font-family);
+}
+
+/* THE MENU BAR CSS STYLES*/
+
+.menu_bar {
+  display: none;
+  flex-flow: column nowrap;
+  position: absolute;
+  margin: 0 2rem 0 0;
+  justify-content: center;
+  align-items: center;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 0.3rem;
+  background-color: transparent;
+  right: 0;
+}
+
+.bar {
+  display: block;
+  width: 3.5rem;
+  padding: 0.2rem;
+  border-radius: 1rem;
+  background-color: white;
+  margin: 0.3rem;
+  transition: 1s all;
+}
+
+.bar1_rotate {
+  position: absolute;
+  transition: 1s transform;
+  transform: rotate(45deg);
+}
+
+.bar2_vanish {
+  position: absolute;
+  transition: 0.3s all;
+  transform: translate(1rem);
+  opacity: 0;
+  display: none;
+}
+
+.bar3_rotate {
+  position: absolute;
+  transition: 1s transform;
+  transform: rotate(-45deg);
+}
+
+/* The LOSANGELES MOUNTAIN TEXT DECORATION */
+.header_section {
+  display: flex;
+  position: relative;
+  width: 100%;
+  bottom: var(--header-text-position);
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.header_text {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  width: auto;
+  background-color: transparent;
+  text-align: center;
+  font-weight: bold;
+}
+
+.losangeles {
+  font-size: var(--losangeles-font-size);
+  color: var(--losangeles-color);
+  font-family: var(--primary-font-family);
+}
+.mountains {
+  font-size: var(--mountain-font-size);
+  color: var(--mountain-color);
+  font-family: var(--primary-font-family);
+}
+
+/* BUTTOM NAVIGATION  AND HEADER FOOTER */
+.header_footer {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.second--nav {
+  position: relative;
+  width: 70%;
+  align-self: center;
+  bottom: 0;
+}
+
+.accordion_1 {
+  display: none;
+  transform: rotate(45deg);
+  margin: 0 1.5rem 0 0;
+  height: auto;
+  width: auto;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.show_close {
+  transform: rotate(0deg);
+}
+
+.accordion_1 span {
+  font-size: 4.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.logo {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  width: var(--logo-img-size);
+  height: var(--logo-img-size);
+}
+
+.logo_text {
+  width: auto;
+}
+
+.small--losangeles {
+  font-size: var(--small-logotext);
+}
+
+.small--mountains {
+  font-size: var(--small-logotext);
+}
+
+.header_footer .nav_menu .nav_list ul li a {
+  color: var(--tertiary-link-color);
+}
+
+/* CSS CLASS ATTRIBUTE FOR GENERALLY STYLING ALL THE CLASSES THAT HAS CONTENT AT THE END */
+
+[class$="_content"] {
+  position: relative;
+  align-self: center;
+  padding: 0;
+  margin: 0;
+  width: 70%;
+  height: 100%;
+}
+
+/* MAIN BODY WHERE THE HISTORY AND TEAM SECTION IS PRESENT */
+
+main {
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* HISTORY SECTION */
+
+.history {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  position: relative;
+  height: 120vh;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  background: url("/img/history_peak.png");
+  background-size: cover;
+}
+
+.history_content {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.history_about {
+  position: relative;
+  width: 90%;
+  font-size: var(--about-content-font-size);
+  align-self: center;
+  line-height: 2.5rem;
+  top: var(--history-about-position);
+  left: 2rem;
+  color: var(--primary-content-color);
+  font-family: var(--tertiary-font-family);
+}
+
+/* SECTION HEADING STYLES FOR BOTH SECTIONS */
+.heading_topic {
+  width: auto;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.heading_number {
+  position: relative;
+  font-size: var(--headingnum-font-size);
+  font-family: var(--secondary-font-family);
+  color: var(--heading-topic-color);
+}
+
+.topic {
+  position: relative;
+  width: 4rem;
+  left: var(--topic-left);
+  top: -8rem;
+  font-size: var(--topic-font-size);
+  background-color: transparent;
+  color: var(--heading-topic-color);
+  font-family: var(--secondary-font-family);
+}
+
+/* PHOTO SECTION FOR HISTORY SECTION */
+
+.photo_section {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 30vh;
+  bottom: 0;
+  background-color: rgba(57, 71, 93, 0.4);
+  overflow: hidden;
+}
+
+.photo_content {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.photo_content div {
+  margin: 1rem;
+}
+
+.photo_content div img {
+  width: 100%;
+  /* min-width: 20rem; */
+  margin: 0.5rem;
+}
+
+.slide_arrow {
+  width: 98%;
+  display: none;
+  position: relative;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  height: 10rem;
+}
+
+.previous_arrow,
+.next_arrow {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  background-color: white;
+}
+
+.previous_arrow {
+  left: 0;
+}
+
+.next_arrow {
+  right: 0;
+}
+
+.next,
+.previous {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  font-size: 2.5rem;
+  width: 3rem;
+  height: 3rem;
+  color: var(--primary-color);
+  font-weight: bold;
+  border-radius: 2rem;
+}
+
+.photo_slide {
+  display: none;
+  align-items: center;
+  width: 10rem;
+  height: 2rem;
+  margin: 0 0 1rem 0;
+}
+
+.span_slide {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  height: auto;
+}
+
+.span_slide .button {
+  padding: 0.5rem;
+  border-radius: 1rem;
+  background-color: var(--slide-color);
+}
+
+.span_slide .glow {
+  background-color: white;
+}
+
+/* TEAM SECTION */
+
+.team {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  position: relative;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 110vh;
+  background: url("img/team_peak.png");
+  background-size: cover;
+}
+
+.team_section {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  justify-self: flex-start;
+  align-self: flex-start;
+  width: 100%;
+  min-height: auto;
+  background-color: white;
+  box-sizing: border-box;
+}
+
+.team_section_content {
+  display: flex;
+  position: relative;
+  height: auto;
+  flex-flow: row wrap;
+  align-items: center;
+  box-sizing: border-box;
+  color: var(--primary-content-color);
+}
+
+.team_about {
+  position: relative;
+  font-size: 1.5rem;
+  width: 60%;
+  line-height: 2.5rem;
+  left: 15rem;
+  font-family: var(--tertiary-font-family);
+}
+
+.mountain_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--primary-color);
+  box-sizing: border-box;
+}
+
+.mountain_content {
+  height: 8vh;
+}
+
+.mountain_content ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  height: 100%;
+}
+
+.mountain_content ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  padding: 0 1rem;
+  height: 100%;
+}
+
+.mountain_content ul li a {
+  font-size: var(--mountainlinks-font-size);
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--tertiary-color);
+  background-color: transparent;
+  font-family: var(--secondary-font-family);
+}
+
+.mountain_content ul li:hover {
+  color: var(--primary-color);
+  background-color: var(--tertiary-color);
+  transition: 1s all;
+}
+
+.mountain_content ul li a:hover {
+  text-decoration: underline;
+  color: var(--primary-color);
+}
+
+.schedule {
+  display: flex;
+  flex-flow: column nowrap;
+  align-self: center;
+  justify-content: center;
+  margin: 4rem 2rem 0;
+  max-width: 30rem;
+  height: auto;
+  background: rgb(255, 255, 255, 0.7);
+}
+
+.schedule_head {
+  display: flex;
+  align-self: center;
+  padding: 2rem 0;
+  justify-content: flex-start;
+  width: 85%;
+}
+
+.schedule_head h1 {
+  color: var(--primary-color);
+  font-size: var(--mountainlinks-font-size);
+  font-weight: bold;
+  font-family: var(--secondary-font-family);
+}
+
+.schedule_list {
+  width: 85%;
+  height: 100%;
+  background-color: transparent;
+  align-self: center;
+}
+
+.schedule_list div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.schedule_list div p {
+  font-size: var(--schedule-list-font-size);
+  font-family: var(--tertiary-font-family);
+}
+
+.schedule_list div:nth-child(1) {
+  margin: 0;
+}
+.schedule_list div:nth-child(2) {
+  margin: 0;
+}
+.schedule_list div:nth-child(3) {
+  margin: 3rem 0;
+}
+.schedule_list div:nth-child(4) {
+  margin: 3rem 0;
+}
+
+footer {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  height: 10vh;
+  background-color: var(--primary-color);
+  box-sizing: border-box;
+}
+
+.footer {
+  display: flex;
+}
+.footer-logo {
+  opacity: 0.3;
+}
+.footer-text {
+  color: var(--tertiary-footer-color);
+}
+
+.copyright {
+  font-size: 1.5rem;
+  color: var(--tertiary-footer-color);
+  font-family: var(--tertiary2-font-family);
+}
+
+@media screen and (max-width: 1000px) {
+  [class$="_content"] {
+    width: 100%;
+    padding: 0 2rem;
+  }
+
+  .nav {
+    width: 100%;
+    background-color: transparent;
+  }
+
+  .second--nav {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 710px) {
+  .header_text {
+    position: relative;
+  }
+
+  .team_section_content {
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .team_about {
+    width: 100%;
+    left: 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .nav-top {
+    background-color: white;
+    box-sizing: border-box;
+  }
+  .menu_bar span {
+    background-color: var(--primary-color);
+  }
+  .nav_list ul {
+    position: absolute;
+    width: 100%;
+    margin: 2rem 0 0 0;
+    height: 10rem;
+    right: 0;
+    z-index: 3;
+    flex-flow: column nowrap;
+    background-color: white;
+    transition: 1s all;
+  }
+
+  .hide {
+    height: 0rem;
+    display: none;
+  }
+
+  .nav_list ul li a {
+    color: blue;
+  }
+  .header_text {
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+  }
+
+  .menu_bar {
+    display: flex;
+  }
+
+  .accordion_1 {
+    display: flex;
+  }
+
+  .photosection {
+    bottom: 4rem;
+  }
+
+  .photo_content {
+    display: flex;
+    position: relative;
+    align-self: flex-start;
+    justify-self: flex-start;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    margin: 0 0;
+    cursor: pointer;
+    transition: 1s all;
+    z-index: 1;
+    scroll-behavior: smooth;
+  }
+
+  .photo_content div img {
+    width: 24rem;
+    margin: 0 0;
+  }
+
+  /* .photo_content img:nth-of-type(1) {
+    margin: 0 0 0 50rem;
+  } */
+  .photo_slide {
+    display: flex;
+  }
+
+  .slide_arrow {
+    display: flex;
+    height: 0;
+    z-index: 3;
+    background-color: white;
+  }
+
+  .schedule {
+    margin: 2rem;
+  }
+
+  .copyright {
+    font-size: 0.7rem;
+  }
+}
