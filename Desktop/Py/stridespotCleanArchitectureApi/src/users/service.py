@@ -1,14 +1,14 @@
 from uuid import UUID
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
-from . import models
+from . import model
 from src.entities.users import User
 from src.exceptions import UserNotFoundError, InvalidPasswordError, PasswordMismatchError
 from src.auth.service import verify_password, get_password_hash
 import logging
 
 
-def get_user_by_id(db:Session, user_id: UUID) -> models.UserResponse:
+def get_user_by_id(db:Session, user_id: UUID) -> model.UserResponse:
     user=db.query(User).filter(User.id == user_id).first()
     
     if not user:
@@ -19,7 +19,7 @@ def get_user_by_id(db:Session, user_id: UUID) -> models.UserResponse:
 
 
 
-def change_password(db:Session, user_id:UUID, password_change:models.PasswordChange)->None:
+def change_password(db:Session, user_id:UUID, password_change:model.PasswordChange)->None:
     try:
         user = get_user_by_id(db, user_id)
         

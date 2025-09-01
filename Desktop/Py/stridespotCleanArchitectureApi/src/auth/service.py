@@ -7,9 +7,9 @@ import jwt
 from jwt import PyJWTError
 from sqlalchemy.orm import Session
 from src.entities.users import User
-from . import models
+from . import model
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
-from ..exceptions import AuthenticationError
+from src.exceptions import AuthenticationError
 import logging
 import os
 from dotenv import load_dotenv
@@ -52,18 +52,18 @@ def create_access_token(email: str, user_id: UUID, expires_delta: timedelta) -> 
     return jwt.encode(encode, SECRET_KEY, algorithm=ALGORITHM)
 
 
-def verify_token(token:str) -> models.TokenData:
+def verify_token(token:str) -> model.TokenData:
     try:
         payload= jwt.encode(token, SECRET_KEY, algorithms=[ALGORITHM])
         user_id:str = payload.get('id')
-        return models.TokenData(user_id=user_id)
+        return model.TokenData(user_id=user_id)
 
     except PyJWTError as e:
         logging.warning(f'Token verification failed: {str(e)}')
         raise AuthenticationError()
 
 
-def register_user(db: Session, register_user_request: models.RegisterUserRequest) -> None:
+def register_user(db: Session, register_user_request: model.RegisterUserRequest) -> None:
     try:
         create_user_model = User(
             id=uuid4(),
@@ -71,7 +71,6 @@ def register_user(db: Session, register_user_request: models.RegisterUserRequest
             phone_no=register_user_request.phone_no,
             first_name=register_user_request.firstname,
             last_name=register_user_request.lastname,
-            user_type=register_user_request.user_type,
             password=get_password_hash(register_user_request.password)
         )
 
@@ -83,20 +82,19 @@ def register_user(db: Session, register_user_request: models.RegisterUserRequest
         raise
 
 
-def get_current_user(token:Annotated[str, Depends(oauth2_bearer)]) ->  models.TokenData:
+def get_current_user(token:Annotated[str, Depends(oauth2_bearer)]) ->  model.TokenData:
     return verify_token(token)
 
 
-CurrentUser = Annotated(models.TokenData, Depends(get_current_user))
+CurrentUser = Annotated[model.TokenData, Depends(get_current_user)]
 
-def login_for_access_token(form_data: Annotated[OAuth2PasswordRequestForm, Depends(oauth2_bearer)], 
-                                                db:Session]) -> models.Token:
+def login_for_access_token(form_data: Annotated[OAuth2PasswordRequestForm, Depends(oauth2_bearer)], db:Session) -> model.Token:
     
     user = authenticate_user(form_data.username, form_data.password, db)
     if not user:
         raise AuthenticationError()
     token = create_access_token(user.email, user.id, timedelta(minutes=ACCESS_TOKEN_EXPIRES_MINUTES))
-    return models.Token(access_token=token, token_type='bearer')
+    return model.Token(access_token=token, token_type='bearer')
 
 
 

@@ -6,3 +6,10 @@
 [Guide_2](https://www.youtube.com/watch?v=0A_GCXBCNUQ)
 
 [Guide_2](https://www.youtube.com/watch?v=f270BoTicMA)
+
+
+
+
+```
+uvicorn src.main:app --reload
+```

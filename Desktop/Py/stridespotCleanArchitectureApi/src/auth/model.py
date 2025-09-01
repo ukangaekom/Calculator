@@ -7,7 +7,6 @@ class RegisterUserRequest(BaseModel):
     phone_no: str
     first_name: str
     last_name: str
-    user_type: str
     password: str
     
     
